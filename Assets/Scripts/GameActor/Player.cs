@@ -13,6 +13,11 @@ namespace Sunny
 
         private StateMachine mSM;
 
+        private void Awake()
+        {
+
+        }
+
         private void Start()
         {
             mSM = new StateMachine();
@@ -24,13 +29,13 @@ namespace Sunny
         }
 
         private void Update()
-        {
+        {            
             mSM.State.LogicUpdate();            
         }
 
         private void FixedUpdate()
         {
             mSM.State.PhysicsUpdate();
-        }
+        }        
     }
 }

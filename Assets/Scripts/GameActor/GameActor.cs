@@ -6,12 +6,12 @@ namespace Sunny
 {
     public abstract class GameActor : MonoBehaviour
     {
-        float MoveSpeed = 1.0f;
+        float WalkSpeed = 3.0f;
 
-        public virtual void Move(Vector2 dir)
-        {
-            Vector2 velocity = dir * MoveSpeed * Time.deltaTime;
-            this.transform.position += new Vector3(velocity.x, velocity.y, 0.0f);
+        public void Walk(Vector2 value)
+        {            
+            Vector2 velocity = value * WalkSpeed * Time.deltaTime;
+            this.transform.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
         }
     }
 }

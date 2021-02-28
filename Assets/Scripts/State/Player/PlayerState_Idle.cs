@@ -25,6 +25,11 @@ namespace Sunny
         public override void LogicUpdate()
         {
             base.LogicUpdate();            
+
+            if (InputManager.IsHorizontalPerformed || InputManager.IsVerticalPerformed)
+            {
+                SM.ChangeState(Player.Walk);
+            }
         }
 
         public override void PhysicsUpdate()
