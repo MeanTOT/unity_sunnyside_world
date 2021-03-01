@@ -33,6 +33,14 @@ public class @InputProvider : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""b00393e9-add0-4118-904d-19810be6ea2f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -101,6 +109,17 @@ public class @InputProvider : IInputActionCollection, IDisposable
                     ""action"": ""Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b581f418-e583-4974-87ce-3d298ba6afea"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -111,6 +130,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
         m_Play = asset.FindActionMap("Play", throwIfNotFound: true);
         m_Play_Horizontal = m_Play.FindAction("Horizontal", throwIfNotFound: true);
         m_Play_Vertical = m_Play.FindAction("Vertical", throwIfNotFound: true);
+        m_Play_Run = m_Play.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -162,12 +182,14 @@ public class @InputProvider : IInputActionCollection, IDisposable
     private IPlayActions m_PlayActionsCallbackInterface;
     private readonly InputAction m_Play_Horizontal;
     private readonly InputAction m_Play_Vertical;
+    private readonly InputAction m_Play_Run;
     public struct PlayActions
     {
         private @InputProvider m_Wrapper;
         public PlayActions(@InputProvider wrapper) { m_Wrapper = wrapper; }
         public InputAction @Horizontal => m_Wrapper.m_Play_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_Play_Vertical;
+        public InputAction @Run => m_Wrapper.m_Play_Run;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -183,6 +205,9 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 @Vertical.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnVertical;
                 @Vertical.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnVertical;
                 @Vertical.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnVertical;
+                @Run.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
             }
             m_Wrapper.m_PlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -193,6 +218,9 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 @Vertical.started += instance.OnVertical;
                 @Vertical.performed += instance.OnVertical;
                 @Vertical.canceled += instance.OnVertical;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
@@ -201,5 +229,6 @@ public class @InputProvider : IInputActionCollection, IDisposable
     {
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

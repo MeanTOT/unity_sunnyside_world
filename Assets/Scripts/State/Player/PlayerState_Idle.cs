@@ -14,7 +14,7 @@ namespace Sunny
         {
             base.Enter();
 
-            SM.ChangeAnimation(Player.Animator, STATE_IDLE);            
+            SM.ChangeAnimation(Player.Animator, ANIM_IDLE);            
         }
 
         public override void Exit()
@@ -26,9 +26,9 @@ namespace Sunny
         {
             base.LogicUpdate();            
 
-            if (InputManager.IsHorizontalPerformed || InputManager.IsVerticalPerformed)
+            if (InputHandler.IsHorizontalPerformed || InputHandler.IsVerticalPerformed)
             {
-                SM.ChangeState(Player.Walk);
+                SM.ChangeState(Player.States.Walk);
             }
         }
 

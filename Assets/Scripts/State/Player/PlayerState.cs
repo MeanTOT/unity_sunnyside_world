@@ -6,8 +6,9 @@ namespace Sunny
 {
     public class PlayerState : State
     {
-        public const string STATE_IDLE = "Idle";
-        public const string STATE_WALK = "Walk";
+        public const string ANIM_IDLE = "Idle";
+        public const string ANIM_WALK = "Walk";
+        public const string ANIM_RUN = "Run";
         public Player Player;
 
         public PlayerState(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)

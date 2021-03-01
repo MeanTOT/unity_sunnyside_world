@@ -6,12 +6,30 @@ namespace Sunny
 {
     public abstract class GameActor : MonoBehaviour
     {
-        float WalkSpeed = 3.0f;
+        public GameActorData Data;
 
-        public void Walk(Vector2 value)
+        public void DoWalk(Vector2 value)
         {            
-            Vector2 velocity = value * WalkSpeed * Time.deltaTime;
+            Vector2 velocity = value * Data.WalkSpeed * Time.deltaTime;
             this.transform.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
+        }
+
+        public void DoRun(Vector2 value)
+        {
+            Vector2 velocity = value * Data.RunSpeed * Time.deltaTime;
+            this.transform.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
+        }
+
+        public void DoFlip(int dir)
+        {
+            if (dir == 1)
+            {
+                this.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
+            }
+            else if (dir == -1)
+            {
+                this.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
+            }
         }
     }
 }
