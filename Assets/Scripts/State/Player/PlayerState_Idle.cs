@@ -29,6 +29,10 @@ namespace Sunny
             if (InputHandler.IsHorizontalPerformed || InputHandler.IsVerticalPerformed)
             {
                 SM.ChangeState(Player.States.Walk);
+            }            
+            else if (InputHandler.IsUseToolPerformed)
+            {
+                SM.ChangeState(Player.States.UseTool);
             }
         }
 

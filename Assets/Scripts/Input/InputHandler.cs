@@ -11,6 +11,7 @@ namespace Sunny
         static public bool IsHorizontalPerformed { get; private set; }
         static public bool IsVerticalPerformed { get; private set; }
         static public bool IsRunPerformed { get; private set; }
+        static public bool IsUseToolPerformed { get; private set; }
         static public Vector2 MoveValue
         { 
             get 
@@ -50,6 +51,9 @@ namespace Sunny
 
             mInputProvider.Play.Run.performed += context => IsRunPerformed = true;
             mInputProvider.Play.Run.canceled += context => IsRunPerformed = false;
+
+            mInputProvider.Play.UseTool.performed += context => IsUseToolPerformed = true;
+            mInputProvider.Play.UseTool.canceled += context => IsUseToolPerformed = false;
         }
     }
 }

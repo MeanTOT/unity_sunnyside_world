@@ -37,6 +37,10 @@ namespace Sunny
             {
                 SM.ChangeState(Player.States.Walk);
             }
+            else if (InputHandler.IsUseToolPerformed)
+            {
+                SM.ChangeState(Player.States.UseTool);
+            }
         }
 
         public override void PhysicsUpdate()

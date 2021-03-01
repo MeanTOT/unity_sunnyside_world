@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/InputProvider.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/InputProvider.inputactions'
 
 using System;
 using System.Collections;
@@ -38,6 +38,14 @@ public class @InputProvider : IInputActionCollection, IDisposable
                     ""name"": ""Run"",
                     ""type"": ""Button"",
                     ""id"": ""b00393e9-add0-4118-904d-19810be6ea2f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""UseTool"",
+                    ""type"": ""Button"",
+                    ""id"": ""563169fe-ad0d-4d09-9e94-1d6cdcd77f42"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
@@ -120,6 +128,17 @@ public class @InputProvider : IInputActionCollection, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c853c26a-010a-48f8-ba48-211d5d6df76f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseTool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
         m_Play_Horizontal = m_Play.FindAction("Horizontal", throwIfNotFound: true);
         m_Play_Vertical = m_Play.FindAction("Vertical", throwIfNotFound: true);
         m_Play_Run = m_Play.FindAction("Run", throwIfNotFound: true);
+        m_Play_UseTool = m_Play.FindAction("UseTool", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
     private readonly InputAction m_Play_Horizontal;
     private readonly InputAction m_Play_Vertical;
     private readonly InputAction m_Play_Run;
+    private readonly InputAction m_Play_UseTool;
     public struct PlayActions
     {
         private @InputProvider m_Wrapper;
@@ -190,6 +211,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
         public InputAction @Horizontal => m_Wrapper.m_Play_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_Play_Vertical;
         public InputAction @Run => m_Wrapper.m_Play_Run;
+        public InputAction @UseTool => m_Wrapper.m_Play_UseTool;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 @Run.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
+                @UseTool.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnUseTool;
+                @UseTool.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnUseTool;
+                @UseTool.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnUseTool;
             }
             m_Wrapper.m_PlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @UseTool.started += instance.OnUseTool;
+                @UseTool.performed += instance.OnUseTool;
+                @UseTool.canceled += instance.OnUseTool;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @InputProvider : IInputActionCollection, IDisposable
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnUseTool(InputAction.CallbackContext context);
     }
 }
