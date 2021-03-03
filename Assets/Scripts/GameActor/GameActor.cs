@@ -8,16 +8,17 @@ namespace Sunny
     {
         public GameActorData Data;
 
-        public void DoWalk(Vector2 value)
-        {            
-            Vector2 velocity = value * Data.WalkSpeed * Time.deltaTime;
-            this.transform.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
+        public void DoWalk(Vector2 value, Rigidbody2D rb2d)
+        {
+
+            Vector2 velocity = new Vector2(this.transform.localPosition.x, this.transform.localPosition.y) + (value * Data.WalkSpeed);
+            rb2d.MovePosition(velocity);            
         }
 
-        public void DoRun(Vector2 value)
+        public void DoRun(Vector2 value, Rigidbody2D rb2d)
         {
-            Vector2 velocity = value * Data.RunSpeed * Time.deltaTime;
-            this.transform.localPosition += new Vector3(velocity.x, velocity.y, 0.0f);
+            Vector2 velocity = new Vector2(this.transform.localPosition.x, this.transform.localPosition.y) + (value * Data.RunSpeed);
+            rb2d.MovePosition(velocity);            
         }
 
         public void DoFlip(int dir)

@@ -25,8 +25,7 @@ namespace Sunny
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-
-            Player.DoWalk(InputHandler.MoveValue);
+            
             Player.DoFlip((int)InputHandler.MoveValue.x);
 
             if (!InputHandler.IsHorizontalPerformed && !InputHandler.IsVerticalPerformed)
@@ -46,6 +45,8 @@ namespace Sunny
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+
+            Player.DoWalk(InputHandler.MoveValue, Player.Rb2D);
         }
     }
 }

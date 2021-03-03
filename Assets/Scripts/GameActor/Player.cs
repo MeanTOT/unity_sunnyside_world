@@ -17,11 +17,13 @@ namespace Sunny
         public PlayerStateContainer States;
         public Animator Animator = null;
 
+        public Rigidbody2D Rb2D { get; private set; }
+
         private StateMachine mSM;
 
         private void Awake()
         {
-
+            Rb2D = this.GetComponent<Rigidbody2D>();
         }
 
         private void Start()
