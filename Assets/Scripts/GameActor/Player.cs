@@ -15,7 +15,7 @@ namespace Sunny
     public class Player : GameActor
     {
         public PlayerStateContainer States;
-        public Animator Animator = null;
+        public Animator Animator = null;        
 
         public Rigidbody2D Rb2D { get; private set; }
 

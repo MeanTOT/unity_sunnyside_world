@@ -3,24 +3,24 @@ using UnityEngine;
 
 namespace Sunny
 {
-    public static class GameEvent
+    public class GameEvent
     {
-        public static event Action<float> OnHorizontalWalk;
-        public static void HorizontalWalk(float value)
-        {
-            if (OnHorizontalWalk != null)
-            {
-                OnHorizontalWalk(value);
-            }
-        }
+        //public event Action<float> OnHorizontalWalk;
+        //public void HorizontalWalk(float value)
+        //{
+        //    if (OnHorizontalWalk != null)
+        //    {
+        //        OnHorizontalWalk(value);
+        //    }
+        //}
 
-        public static event Action<float> OnVerticalWalk;
-        public static void VerticalWalk(float value)
-        {
-            if (OnVerticalWalk != null)
-            {
-                OnVerticalWalk(value);
-            }
-        }
+        //public event Action<float> OnVerticalWalk;
+        //public void VerticalWalk(float value)
+        //{
+        //    if (OnVerticalWalk != null)
+        //    {
+        //        OnVerticalWalk(value);
+        //    }
+        //}
     }
 }

@@ -10,7 +10,6 @@ namespace Sunny
 
         public void DoWalk(Vector2 value, Rigidbody2D rb2d)
         {
-
             Vector2 velocity = new Vector2(this.transform.localPosition.x, this.transform.localPosition.y) + (value * Data.WalkSpeed);
             rb2d.MovePosition(velocity);            
         }

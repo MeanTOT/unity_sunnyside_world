@@ -26,17 +26,17 @@ namespace Sunny
         {
             base.LogicUpdate();
             
-            Player.DoFlip((int)InputHandler.MoveValue.x);
+            Player.DoFlip((int)Locator.Input.MoveValue.x);
 
-            if (!InputHandler.IsHorizontalPerformed && !InputHandler.IsVerticalPerformed)
+            if (!Locator.Input.IsHorizontalPerformed && !Locator.Input.IsVerticalPerformed)
             {
                 SM.ChangeState(Player.States.Idle);
             }
-            else if (!InputHandler.IsRunPerformed) 
+            else if (!Locator.Input.IsRunPerformed) 
             {
                 SM.ChangeState(Player.States.Walk);
             }
-            else if (InputHandler.IsUseToolPerformed)
+            else if (Locator.Input.IsUseToolPerformed)
             {
                 SM.ChangeState(Player.States.UseTool);
             }
@@ -46,7 +46,7 @@ namespace Sunny
         {
             base.PhysicsUpdate();
 
-            Player.DoRun(InputHandler.MoveValue, Player.Rb2D);
+            Player.DoRun(Locator.Input.MoveValue, Player.Rb2D);
         }
     }
 }

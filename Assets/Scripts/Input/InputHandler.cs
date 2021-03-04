@@ -3,16 +3,16 @@ using UnityEngine.InputSystem;
 
 namespace Sunny
 {
-    public static class InputHandler
+    public class InputHandler
     {
-        static private InputProvider mInputProvider = null;
-        static private InputActionMap mCurrentActionMap = null;
+        private InputProvider mInputProvider = null;
+        private InputActionMap mCurrentActionMap = null;
 
-        static public bool IsHorizontalPerformed { get; private set; }
-        static public bool IsVerticalPerformed { get; private set; }
-        static public bool IsRunPerformed { get; private set; }
-        static public bool IsUseToolPerformed { get; private set; }
-        static public Vector2 MoveValue
+        public bool IsHorizontalPerformed { get; private set; }
+        public bool IsVerticalPerformed { get; private set; }
+        public bool IsRunPerformed { get; private set; }
+        public bool IsUseToolPerformed { get; private set; }
+        public Vector2 MoveValue
         { 
             get 
             {
@@ -20,14 +20,24 @@ namespace Sunny
             }
         }
 
-        static InputHandler()
+        public InputHandler()
         {
             InitInputProviderInternal();
             InitInputActionMapsInternal();
             InitActionEventsInternal();
         }
 
-        private static void InitInputProviderInternal()
+        public Vector2 GetMouseScreenPosition()
+        {
+            return mInputProvider.Play.MousePosition.ReadValue<Vector2>();
+        }
+
+        public Vector2 GetMouseWorldPosition()
+        {
+            return Camera.main.ScreenToWorldPoint(mInputProvider.Play.MousePosition.ReadValue<Vector2>());
+        }
+
+        private void InitInputProviderInternal()
         {
             if (mInputProvider == null)
                 mInputProvider = new InputProvider();
@@ -36,12 +46,12 @@ namespace Sunny
             Application.quitting += () => mInputProvider.Disable();
         }
 
-        private static void InitInputActionMapsInternal()
+        private void InitInputActionMapsInternal()
         {
             mCurrentActionMap = mInputProvider.Play;
         }
 
-        private static void InitActionEventsInternal()
+        private void InitActionEventsInternal()
         {
             mInputProvider.Play.Horizontal.performed += context => IsHorizontalPerformed = true;
             mInputProvider.Play.Horizontal.canceled += context => IsHorizontalPerformed = false;

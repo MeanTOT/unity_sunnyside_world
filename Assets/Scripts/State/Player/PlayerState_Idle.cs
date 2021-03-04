@@ -26,11 +26,11 @@ namespace Sunny
         {
             base.LogicUpdate();            
 
-            if (InputHandler.IsHorizontalPerformed || InputHandler.IsVerticalPerformed)
+            if (Locator.Input.IsHorizontalPerformed || Locator.Input.IsVerticalPerformed)
             {
                 SM.ChangeState(Player.States.Walk);
             }            
-            else if (InputHandler.IsUseToolPerformed)
+            else if (Locator.Input.IsUseToolPerformed)
             {
                 SM.ChangeState(Player.States.UseTool);
             }
