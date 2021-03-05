@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Tree_Default
   m_EditorClassIdentifier: 
   Name: Tree_Default
-  Hp: 5
+  Hp: 3

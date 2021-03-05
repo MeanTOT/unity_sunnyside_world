@@ -7,6 +7,12 @@ namespace Sunny
     public class InteractionDetector : MonoBehaviour
     {
         private Vector2 mDetectionBoxSize = new Vector2(0.3f, 0.3f);
+        private NullObject mNullObject = null;
+
+        private void Awake()
+        {
+            mNullObject = new NullObject();
+        }
 
         public bool CanMove()
         {
@@ -24,7 +30,7 @@ namespace Sunny
             return detectedCollider == null;
         }
 
-        public Transform GetTargetOrNull()
+        public Transform GetTargtOrNull()
         {
             Collider2D detectedCollider = null;
 
@@ -49,7 +55,7 @@ namespace Sunny
                 return detectedCollider.GetComponent<IInteraction>();
             }
             
-            return new NullObject();
+            return mNullObject;
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Sunny
     public class NaturalData : ScriptableObject
     {
         public string Name = "";
-        public float Hp = 0.0f;
+        public float Hp = 0.0f;        
     }
 }

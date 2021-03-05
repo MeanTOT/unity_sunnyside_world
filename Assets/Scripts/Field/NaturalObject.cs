@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace Sunny
 {
+    [RequireComponent(typeof(Animator))]
     public class NaturalObject : MonoBehaviour, IInteraction
     {
-        public NaturalData Data;
-
-        [SerializeField] private EInteractionType mInteractionType;
+        [BoxGroup("Natural")] public NaturalData Data;
+        [BoxGroup("Natural")] [SerializeField] private EInteractionType mInteractionType;
         public EInteractionType Type { get => mInteractionType; }
-        public void Interaction()
+
+        protected float CurrentHp;
+        protected Animator Animator = null;
+        protected readonly string ANIM_BREAK = "Break";
+
+        private void Awake()
         {
-            Debug.Log("Interaction");
+            Animator = this.GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            CurrentHp = Data.Hp;
+        }
+        
+        public virtual void Interaction()
+        {
+         
         }
     }
 }
