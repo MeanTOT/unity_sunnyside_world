@@ -6,6 +6,6 @@ namespace Sunny
 {
     public class NaturalObject : MonoBehaviour
     {
-        public NaturalData Data;
+        public NaturalData Data;        
     }
 }

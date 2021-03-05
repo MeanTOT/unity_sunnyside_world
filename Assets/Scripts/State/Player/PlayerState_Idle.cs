@@ -24,13 +24,22 @@ namespace Sunny
 
         public override void LogicUpdate()
         {
-            base.LogicUpdate();            
+            base.LogicUpdate();
 
-            if (Locator.Input.IsHorizontalPerformed || Locator.Input.IsVerticalPerformed)
+            Player.DoFlip((int)Locator.Input.HorizontalValue);
+
+            if ((Locator.Input.IsHorizontalPerformed || Locator.Input.IsVerticalPerformed) && Player.InteractionDetector.CanMove())
             {
-                SM.ChangeState(Player.States.Walk);
+                if (Locator.Input.IsRunPerformed)
+                {
+                    SM.ChangeState(Player.States.Run);
+                }
+                else
+                {
+                    SM.ChangeState(Player.States.Walk);
+                }                
             }            
-            else if (Locator.Input.IsUseToolPerformed)
+            else if (Locator.Input.IsUseToolPerformed && Player.InteractionDetector.GetTargetOrNull())
             {
                 SM.ChangeState(Player.States.UseTool);
             }

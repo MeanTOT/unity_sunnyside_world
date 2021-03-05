@@ -140,7 +140,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c853c26a-010a-48f8-ba48-211d5d6df76f"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

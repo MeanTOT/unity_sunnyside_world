@@ -15,6 +15,21 @@ namespace Sunny
             base.Enter();
 
             SM.ChangeAnimation(Player.Animator, ANIM_RUN);
+
+            Player.DoFlip((int)Locator.Input.HorizontalValue);
+
+            if (Locator.Input.IsHorizontalPerformed)
+            {
+                this.Player.DoPixelRun(new Vector2(Locator.Input.HorizontalValue, 0.0f)).setOnComplete(() => SM.ChangeState(Player.States.Idle));
+            }
+            else if (Locator.Input.IsVerticalPerformed)
+            {
+                this.Player.DoPixelRun(new Vector2(0.0f, Locator.Input.VerticalValue)).setOnComplete(() => SM.ChangeState(Player.States.Idle));
+            }
+            else
+            {
+                SM.ChangeState(Player.States.Idle);
+            }
         }
 
         public override void Exit()
@@ -25,28 +40,11 @@ namespace Sunny
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            
-            Player.DoFlip((int)Locator.Input.MoveValue.x);
-
-            if (!Locator.Input.IsHorizontalPerformed && !Locator.Input.IsVerticalPerformed)
-            {
-                SM.ChangeState(Player.States.Idle);
-            }
-            else if (!Locator.Input.IsRunPerformed) 
-            {
-                SM.ChangeState(Player.States.Walk);
-            }
-            else if (Locator.Input.IsUseToolPerformed)
-            {
-                SM.ChangeState(Player.States.UseTool);
-            }
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
-
-            Player.DoRun(Locator.Input.MoveValue, Player.Rb2D);
         }
     }
 }

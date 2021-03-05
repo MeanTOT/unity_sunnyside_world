@@ -12,13 +12,8 @@ namespace Sunny
         public bool IsVerticalPerformed { get; private set; }
         public bool IsRunPerformed { get; private set; }
         public bool IsUseToolPerformed { get; private set; }
-        public Vector2 MoveValue
-        { 
-            get 
-            {
-                return new Vector2(mInputProvider.Play.Horizontal.ReadValue<float>(), mInputProvider.Play.Vertical.ReadValue<float>());
-            }
-        }
+        public float HorizontalValue { get { return mInputProvider.Play.Horizontal.ReadValue<float>(); } }
+        public float VerticalValue { get { return mInputProvider.Play.Vertical.ReadValue<float>(); } }
 
         public InputHandler()
         {

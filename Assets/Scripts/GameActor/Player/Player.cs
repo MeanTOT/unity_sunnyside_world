@@ -14,9 +14,10 @@ namespace Sunny
 
     public class Player : GameActor
     {
+        public Animator Animator = null;
         public PlayerStateContainer States;
-        public Animator Animator = null;        
 
+        public InteractionDetector InteractionDetector { get; private set; }
         public Rigidbody2D Rb2D { get; private set; }
 
         private StateMachine mSM;
@@ -24,6 +25,7 @@ namespace Sunny
         private void Awake()
         {
             Rb2D = this.GetComponent<Rigidbody2D>();
+            InteractionDetector = this.GetComponentInChildren<InteractionDetector>();
         }
 
         private void Start()

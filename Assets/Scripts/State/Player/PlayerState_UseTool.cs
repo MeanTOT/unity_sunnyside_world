@@ -13,9 +13,8 @@ namespace Sunny
         public override void Enter()
         {
             base.Enter();
-
-            //CurrentTool.Anim_Name
-            SM.ChangeAnimation(Player.Animator, ANIM_AXE);            
+            
+            SM.ChangeAnimation(Player.Animator, ANIM_AXE);
         }
 
         public override void Exit()
