@@ -30,7 +30,7 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "UseTool",
+                    "name": "Interaction",
                     "type": "Button",
                     "id": "563169fe-ad0d-4d09-9e94-1d6cdcd77f42",
                     "expectedControlType": "Button",
@@ -131,7 +131,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "UseTool",
+                    "action": "Interaction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

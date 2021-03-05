@@ -2846,6 +2846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Data: {fileID: 11400000, guid: 0668b17533457834abfe5b06e64801dc, type: 2}
+  mInteractionType: 1
 --- !u!61 &1712299405
 BoxCollider2D:
   m_ObjectHideFlags: 0

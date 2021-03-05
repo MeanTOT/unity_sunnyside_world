@@ -39,9 +39,9 @@ namespace Sunny
                     SM.ChangeState(Player.States.Walk);
                 }                
             }            
-            else if (Locator.Input.IsUseToolPerformed && Player.InteractionDetector.GetTargetOrNull())
+            else if (Locator.Input.IsInteractionPerformed && Player.InteractionDetector.GetTargetOrNull())
             {
-                SM.ChangeState(Player.States.UseTool);
+                SM.ChangeState(Player.States.Interaction);
             }
         }
 

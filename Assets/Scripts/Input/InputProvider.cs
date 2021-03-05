@@ -43,7 +43,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""UseTool"",
+                    ""name"": ""Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""563169fe-ad0d-4d09-9e94-1d6cdcd77f42"",
                     ""expectedControlType"": ""Button"",
@@ -144,7 +144,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""UseTool"",
+                    ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -169,7 +169,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
         m_Play_Horizontal = m_Play.FindAction("Horizontal", throwIfNotFound: true);
         m_Play_Vertical = m_Play.FindAction("Vertical", throwIfNotFound: true);
         m_Play_Run = m_Play.FindAction("Run", throwIfNotFound: true);
-        m_Play_UseTool = m_Play.FindAction("UseTool", throwIfNotFound: true);
+        m_Play_Interaction = m_Play.FindAction("Interaction", throwIfNotFound: true);
         m_Play_MousePosition = m_Play.FindAction("MousePosition", throwIfNotFound: true);
     }
 
@@ -223,7 +223,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
     private readonly InputAction m_Play_Horizontal;
     private readonly InputAction m_Play_Vertical;
     private readonly InputAction m_Play_Run;
-    private readonly InputAction m_Play_UseTool;
+    private readonly InputAction m_Play_Interaction;
     private readonly InputAction m_Play_MousePosition;
     public struct PlayActions
     {
@@ -232,7 +232,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
         public InputAction @Horizontal => m_Wrapper.m_Play_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_Play_Vertical;
         public InputAction @Run => m_Wrapper.m_Play_Run;
-        public InputAction @UseTool => m_Wrapper.m_Play_UseTool;
+        public InputAction @Interaction => m_Wrapper.m_Play_Interaction;
         public InputAction @MousePosition => m_Wrapper.m_Play_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Play; }
         public void Enable() { Get().Enable(); }
@@ -252,9 +252,9 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 @Run.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnRun;
-                @UseTool.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnUseTool;
-                @UseTool.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnUseTool;
-                @UseTool.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnUseTool;
+                @Interaction.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnInteraction;
                 @MousePosition.started -= m_Wrapper.m_PlayActionsCallbackInterface.OnMousePosition;
                 @MousePosition.performed -= m_Wrapper.m_PlayActionsCallbackInterface.OnMousePosition;
                 @MousePosition.canceled -= m_Wrapper.m_PlayActionsCallbackInterface.OnMousePosition;
@@ -271,9 +271,9 @@ public class @InputProvider : IInputActionCollection, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
-                @UseTool.started += instance.OnUseTool;
-                @UseTool.performed += instance.OnUseTool;
-                @UseTool.canceled += instance.OnUseTool;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
                 @MousePosition.started += instance.OnMousePosition;
                 @MousePosition.performed += instance.OnMousePosition;
                 @MousePosition.canceled += instance.OnMousePosition;
@@ -286,7 +286,7 @@ public class @InputProvider : IInputActionCollection, IDisposable
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnUseTool(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
     }
 }

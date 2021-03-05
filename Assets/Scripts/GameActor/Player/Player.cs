@@ -9,7 +9,8 @@ namespace Sunny
         public PlayerState_Idle Idle;
         public PlayerState_Walk Walk;
         public PlayerState_Run Run;
-        public PlayerState_UseTool UseTool;
+        public PlayerState_Axe Axe;
+        public PlayerState_Interaction Interaction;
     }
 
     public class Player : GameActor
@@ -49,7 +50,8 @@ namespace Sunny
             States.Idle = new PlayerState_Idle(this, mSM);
             States.Walk = new PlayerState_Walk(this, mSM);
             States.Run = new PlayerState_Run(this, mSM);
-            States.UseTool = new PlayerState_UseTool(this, mSM);
+            States.Axe = new PlayerState_Axe(this, mSM);
+            States.Interaction = new PlayerState_Interaction(this, mSM);
             mSM.Init(States.Idle);
         }
     }

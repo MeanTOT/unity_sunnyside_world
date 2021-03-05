@@ -37,5 +37,19 @@ namespace Sunny
 
             return null;
         }
+
+        public IInteraction GetInteraction()
+        {
+            Collider2D detectedCollider = null;
+
+            detectedCollider = Physics2D.OverlapBox(this.transform.position + this.transform.parent.right, mDetectionBoxSize, 0.0f);
+
+            if (detectedCollider != null && detectedCollider.GetComponent<IInteraction>() != null)
+            {
+                return detectedCollider.GetComponent<IInteraction>();
+            }
+            
+            return new NullObject();
+        }
     }
 }

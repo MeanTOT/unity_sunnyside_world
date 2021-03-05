@@ -11,7 +11,7 @@ namespace Sunny
         public bool IsHorizontalPerformed { get; private set; }
         public bool IsVerticalPerformed { get; private set; }
         public bool IsRunPerformed { get; private set; }
-        public bool IsUseToolPerformed { get; private set; }
+        public bool IsInteractionPerformed { get; private set; }
         public float HorizontalValue { get { return mInputProvider.Play.Horizontal.ReadValue<float>(); } }
         public float VerticalValue { get { return mInputProvider.Play.Vertical.ReadValue<float>(); } }
 
@@ -57,8 +57,8 @@ namespace Sunny
             mInputProvider.Play.Run.performed += context => IsRunPerformed = true;
             mInputProvider.Play.Run.canceled += context => IsRunPerformed = false;
 
-            mInputProvider.Play.UseTool.performed += context => IsUseToolPerformed = true;
-            mInputProvider.Play.UseTool.canceled += context => IsUseToolPerformed = false;
+            mInputProvider.Play.Interaction.performed += context => IsInteractionPerformed = true;
+            mInputProvider.Play.Interaction.canceled += context => IsInteractionPerformed = false;
         }
     }
 }

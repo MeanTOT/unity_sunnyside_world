@@ -4,16 +4,16 @@ using UnityEngine;
 
 namespace Sunny
 {
-    public class PlayerState_UseTool : PlayerState
+    public class PlayerState_Axe : PlayerState
     {
-        public PlayerState_UseTool(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)
+        public PlayerState_Axe(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)
         {
         }
 
         public override void Enter()
         {
             base.Enter();
-            
+
             SM.ChangeAnimation(Player.Animator, ANIM_AXE);
         }
 
