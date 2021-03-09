@@ -6,7 +6,7 @@ namespace Sunny
 {
     public class PlayerState_Idle : PlayerState
     {
-        public PlayerState_Idle(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)
+        public PlayerState_Idle(Actor actor, StateMachine stateMachine) : base(actor, stateMachine)
         {
         }
 
@@ -26,7 +26,7 @@ namespace Sunny
         {
             base.LogicUpdate();
 
-            Player.DoFlip((int)Locator.Input.HorizontalValue);
+            Player.Actions.Flip.Execute(Player.transform, (int)Locator.Input.HorizontalValue);
 
             if ((Locator.Input.IsHorizontalPerformed || Locator.Input.IsVerticalPerformed) && Player.InteractionDetector.CanMove())
             {

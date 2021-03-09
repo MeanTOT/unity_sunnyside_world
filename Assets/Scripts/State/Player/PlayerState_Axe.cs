@@ -6,7 +6,7 @@ namespace Sunny
 {
     public class PlayerState_Axe : PlayerState
     {
-        public PlayerState_Axe(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)
+        public PlayerState_Axe(Actor actor, StateMachine stateMachine) : base(actor, stateMachine)
         {
         }
 

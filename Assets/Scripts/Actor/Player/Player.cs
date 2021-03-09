@@ -4,17 +4,24 @@ using UnityEngine;
 
 namespace Sunny
 {
-    public struct PlayerStateContainer
+    public class Player : Actor
     {
-        public PlayerState_Idle Idle;
-        public PlayerState_Walk Walk;
-        public PlayerState_Run Run;
-        public PlayerState_Axe Axe;
-    }
+        public struct StateContainer
+        {
+            public PlayerState_Idle Idle;
+            public PlayerState_Walk Walk;
+            public PlayerState_Run Run;
+            public PlayerState_Axe Axe;
+        }
 
-    public class Player : GameActor
-    {
-        public PlayerStateContainer States;
+        public struct ActionContainer
+        {
+            public Move Move;
+            public Flip Flip;
+        }
+
+        public StateContainer States;
+        public ActionContainer Actions;
 
         public Animator Animator { get; private set; } = null;
         public Rigidbody2D Rb2D { get; private set; } = null;
@@ -34,6 +41,7 @@ namespace Sunny
         private void Start()
         {
             InitStatesInternal();
+            InitActionsInternal();
         }
 
         private void Update()
@@ -59,6 +67,12 @@ namespace Sunny
             States.Run = new PlayerState_Run(this, mSM);
             States.Axe = new PlayerState_Axe(this, mSM);
             mSM.Init(States.Idle);
+        }
+        
+        private void InitActionsInternal()
+        {
+            Actions.Move = new Move();
+            Actions.Flip = new Flip();
         }
     }
 }

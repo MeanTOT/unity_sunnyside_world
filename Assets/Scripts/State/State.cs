@@ -8,7 +8,7 @@ namespace Sunny
     {        
         public StateMachine SM;
 
-        protected State(GameActor gameActor, StateMachine stateMachine)
+        protected State(Actor actor, StateMachine stateMachine)
         {            
             this.SM = stateMachine;
         }

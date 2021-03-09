@@ -6,7 +6,7 @@ namespace Sunny
     [RequireComponent(typeof(Animator))]
     public class NaturalObject : MonoBehaviour, IInteraction
     {
-        [BoxGroup("Natural")] public NaturalData Data;
+        [BoxGroup("Natural")] public Data.Natural Data;
         [BoxGroup("Natural")] [SerializeField] private EInteractionType mInteractionType;
         public EInteractionType Type { get => mInteractionType; }
 

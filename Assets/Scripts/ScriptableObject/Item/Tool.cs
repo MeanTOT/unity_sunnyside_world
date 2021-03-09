@@ -1,10 +1,10 @@
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-namespace Sunny
+namespace Sunny.Data
 {
     [CreateAssetMenu(menuName = "Data/Tool")]
-    public class ToolData : ItemData
+    public class Tool : Item
     {
         
     }

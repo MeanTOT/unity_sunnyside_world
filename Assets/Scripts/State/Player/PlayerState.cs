@@ -12,9 +12,9 @@ namespace Sunny
         public const string ANIM_AXE = "Axe";
         public Player Player;
 
-        public PlayerState(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)
+        public PlayerState(Actor actor, StateMachine stateMachine) : base(actor, stateMachine)
         {
-            this.Player = (Player)gameActor;            
+            this.Player = (Player)actor;            
         }
 
         public override void Enter()

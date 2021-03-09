@@ -6,7 +6,7 @@ namespace Sunny
 {
     public class PlayerState_Run : PlayerState
     {
-        public PlayerState_Run(GameActor gameActor, StateMachine stateMachine) : base(gameActor, stateMachine)
+        public PlayerState_Run(Actor actor, StateMachine stateMachine) : base(actor, stateMachine)
         {
         }
 
@@ -16,15 +16,15 @@ namespace Sunny
 
             SM.ChangeAnimation(Player.Animator, ANIM_RUN);
 
-            Player.DoFlip((int)Locator.Input.HorizontalValue);
+            Player.Actions.Flip.Execute(Player.transform, (int)Locator.Input.HorizontalValue);
 
             if (Locator.Input.IsHorizontalPerformed)
             {
-                this.Player.DoPixelRun(new Vector2(Locator.Input.HorizontalValue, 0.0f)).setOnComplete(() => SM.ChangeState(Player.States.Idle));
+                this.Player.Actions.Move.ExecuteByPixel(this.Player.transform, new Vector2(Locator.Input.HorizontalValue, 0.0f), this.Player.Data.RunDuration).setOnComplete(() => SM.ChangeState(Player.States.Idle));
             }
             else if (Locator.Input.IsVerticalPerformed)
             {
-                this.Player.DoPixelRun(new Vector2(0.0f, Locator.Input.VerticalValue)).setOnComplete(() => SM.ChangeState(Player.States.Idle));
+                this.Player.Actions.Move.ExecuteByPixel(this.Player.transform, new Vector2(0.0f, Locator.Input.VerticalValue), this.Player.Data.RunDuration).setOnComplete(() => SM.ChangeState(Player.States.Idle));
             }
             else
             {
