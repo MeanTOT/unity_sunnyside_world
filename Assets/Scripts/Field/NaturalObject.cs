@@ -21,12 +21,14 @@ namespace Sunny
 
         private void Start()
         {
-            CurrentHp = Data.Hp;
+            InitDataInternal();
         }
-        
-        public virtual void Interaction()
+
+        public virtual void Interaction() { }        
+
+        private void InitDataInternal()
         {
-         
+            CurrentHp = Data.Hp;
         }
     }
 }
