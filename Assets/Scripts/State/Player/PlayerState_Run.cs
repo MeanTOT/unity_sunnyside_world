@@ -15,21 +15,6 @@ namespace Sunny
             base.Enter();
 
             SM.ChangeAnimation(Player.Animator, ANIM_RUN);
-
-            Player.Actions.Flip.Execute(Player.transform, (int)Locator.Input.HorizontalValue);
-
-            if (Locator.Input.IsHorizontalPerformed)
-            {
-                this.Player.Actions.Move.ExecuteByPixel(this.Player.transform, new Vector2(Locator.Input.HorizontalValue, 0.0f), this.Player.Data.RunDuration).setOnComplete(() => SM.ChangeState(Player.States.Idle));
-            }
-            else if (Locator.Input.IsVerticalPerformed)
-            {
-                this.Player.Actions.Move.ExecuteByPixel(this.Player.transform, new Vector2(0.0f, Locator.Input.VerticalValue), this.Player.Data.RunDuration).setOnComplete(() => SM.ChangeState(Player.States.Idle));
-            }
-            else
-            {
-                SM.ChangeState(Player.States.Idle);
-            }
         }
 
         public override void Exit()
@@ -40,11 +25,28 @@ namespace Sunny
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+
+            Player.Actions.Flip.Execute(Player.transform, (int)Locator.Input.HorizontalValue);
+
+            if (!Locator.Input.IsHorizontalPerformed && !Locator.Input.IsVerticalPerformed)
+            {
+                SM.ChangeState(Player.States.Idle);
+            }
+            else if (!Locator.Input.IsRunPerformed)
+            {
+                SM.ChangeState(Player.States.Walk);
+            }
+            else if (Locator.Input.IsInteractionPerformed)
+            {
+                Locator.InteractionHandler.HandleInteraction(this.Player, SM);
+            }
         }
 
         public override void PhysicsUpdate()
         {
             base.PhysicsUpdate();
+
+            this.Player.Actions.Move.Execute(this.Player.Rb2D, new Vector2(Locator.Input.HorizontalValue, Locator.Input.VerticalValue), Player.Data.RunSpeed);
         }
     }
 }

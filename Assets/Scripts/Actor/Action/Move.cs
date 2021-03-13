@@ -4,9 +4,9 @@ namespace Sunny
 {
     public class Move
     {
-        public LTDescr ExecuteByPixel(Transform target, Vector2 dir, float duration)
+        public void Execute(Rigidbody2D target, Vector2 dir, float speed)
         {
-            return LeanTween.moveLocal(target.gameObject, target.localPosition + new Vector3(dir.x, dir.y, 0.0f), duration);
+            target.MovePosition(new Vector2(target.transform.position.x, target.transform.position.y) + (dir * speed) * Time.deltaTime);
         }
     }
 }

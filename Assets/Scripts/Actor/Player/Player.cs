@@ -25,8 +25,6 @@ namespace Sunny
 
         public Animator Animator { get; private set; } = null;
         public Rigidbody2D Rb2D { get; private set; } = null;
-        public InteractionDetector InteractionDetector { get; private set; } = null;
-        public InteractionHandler InteractionHandler { get; private set; } = null;
 
         private StateMachine mSM;
 
@@ -34,8 +32,6 @@ namespace Sunny
         {
             Animator = this.GetComponent<Animator>();
             Rb2D = this.GetComponent<Rigidbody2D>();
-            InteractionDetector = this.GetComponentInChildren<InteractionDetector>();
-            InteractionHandler = this.GetComponentInChildren<InteractionHandler>();
         }
 
         private void Start()
@@ -54,11 +50,6 @@ namespace Sunny
             mSM.State.PhysicsUpdate();
         }
 
-        public void DoInteraction()
-        {
-            InteractionDetector.GetInteraction().Interaction();
-        }
-
         private void InitStatesInternal()
         {
             mSM = new StateMachine();            
@@ -73,6 +64,11 @@ namespace Sunny
         {
             Actions.Move = new Move();
             Actions.Flip = new Flip();
+        }
+
+        private void DoInteractionEventInternal()
+        {
+            Locator.InteractionHandler.DoInteraction();
         }
     }
 }

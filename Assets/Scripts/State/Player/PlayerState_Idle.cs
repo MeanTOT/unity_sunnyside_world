@@ -28,7 +28,7 @@ namespace Sunny
 
             Player.Actions.Flip.Execute(Player.transform, (int)Locator.Input.HorizontalValue);
 
-            if ((Locator.Input.IsHorizontalPerformed || Locator.Input.IsVerticalPerformed) && Player.InteractionDetector.CanMove())
+            if ((Locator.Input.IsHorizontalPerformed || Locator.Input.IsVerticalPerformed))
             {
                 if (Locator.Input.IsRunPerformed)
                 {
@@ -39,9 +39,9 @@ namespace Sunny
                     SM.ChangeState(Player.States.Walk);
                 }                
             }            
-            else if (Locator.Input.IsInteractionPerformed && Player.InteractionDetector.GetInteraction().Type != EInteractionType.None)
+            else if (Locator.Input.IsInteractionPerformed)
             {
-                Player.InteractionHandler.HandleInteraction(this.Player, SM);
+                Locator.InteractionHandler.HandleInteraction(this.Player, SM);
             }
         }
 

@@ -18,6 +18,11 @@ namespace Sunny
             mRay = new Ray2D(Locator.Input.GetMouseWorldPosition(), Vector2.zero);
             RaycastHit2D hit = Physics2D.Raycast(mRay.origin, mRay.direction);
 
+            if (hit.collider != null)
+            {
+                Debug.Log(hit.collider.name);
+            }
+
             return hit;
         }
     }
